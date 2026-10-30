@@ -1,0 +1,5 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src https://raeene.0vuln.com https://pcap.0vuln.com https://range.0vuln.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
