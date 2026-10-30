@@ -4,39 +4,47 @@
 <title>0vuln – learn it, break it, defend it</title>
 <meta name="description" content="0vuln.com: a cybersecurity playground. A hacking lab, a packet analyzer, and the person behind them.">
 <meta property="og:title" content="0vuln"><meta property="og:description" content="Learn it, break it (safely), defend it.">
+<meta name="theme-color" content="#070416">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🛡️%3C/text%3E%3C/svg%3E">
 <style>
-:root{--bg:#0a0f0a;--fg:#33ff66;--dim:#1c8f3c;--amb:#ffb000;--red:#ff5555}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 "Courier New",monospace;min-height:100vh}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(rgba(0,0,0,.18) 0 1px,transparent 1px 3px)}
-main{max-width:980px;margin:0 auto;padding:32px 20px 64px}
-h1{margin:0;font-size:clamp(44px,12vw,88px);letter-spacing:4px;text-shadow:0 0 12px #33ff6666}
-.tag{color:var(--amb);margin:4px 0 20px}
-#log{min-height:92px}
-.d{color:var(--dim)}.e{color:var(--red)}.c{color:var(--amb)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:28px 0}
-.card{display:block;border:1px solid var(--dim);padding:16px;color:inherit;text-decoration:none;transition:.15s}
-.card:hover,.card:focus-visible{border-color:var(--fg);box-shadow:0 0 14px #33ff6644;outline:0;transform:translateY(-2px)}
-.card b{display:block;color:var(--amb);font-size:19px}
-.card .p{color:var(--dim);font-size:13px}
-.st{font-size:13px;margin-top:10px;color:var(--dim)}.st.on{color:var(--fg)}.st.off{color:var(--amb)}
-#term{border-top:1px solid var(--dim);padding-top:14px;cursor:text}
+:root{--bg:#070416;--ink:#efe6ff;--dim:#9a8bd0;--a:#ffb938;--c:#4df3ff;--m:#ff4fa3;--line:#2a1f6b}
+*{box-sizing:border-box}html{background:var(--bg)}
+body{margin:0;min-height:100vh;color:var(--ink);font:17px/1.5 "Cascadia Mono","SF Mono",Menlo,Consolas,"Courier New",monospace;background:linear-gradient(#070416 0,#1a0b3d 60%,#3a0f5c 100%);overflow-x:hidden;text-shadow:0 0 6px rgba(160,120,255,.35)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.5) 100%)}
+.sun{position:fixed;left:50%;bottom:26vh;width:min(48vw,420px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:linear-gradient(#ffb938 20%,#ff4fa3 100%);opacity:.85;z-index:0}
+.sun::after{content:"";position:absolute;inset:55% 0 0;background:repeating-linear-gradient(transparent 0 9px,#2a0f4d 9px 14px)}
+.floor{position:fixed;left:-60%;right:-60%;bottom:0;height:46vh;z-index:0;transform:perspective(320px) rotateX(62deg);transform-origin:bottom;background:linear-gradient(transparent 0,rgba(255,79,163,.28) 100%),repeating-linear-gradient(90deg,rgba(255,79,163,.6) 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,rgba(77,243,255,.45) 0 1px,transparent 1px 42px);background-position:0 0,0 0,0 0}
+@media (prefers-reduced-motion:no-preference){.floor{animation:g 2.4s linear infinite}@keyframes g{to{background-position:0 0,0 0,0 42px}}.card{animation:in .5s both}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}@keyframes in{from{opacity:0;transform:translateY(10px)}}}
+main{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;padding:14px 4vw 22px}
+.bar{display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-size:14px}
+.bar button{background:none;border:1px solid var(--line);color:var(--dim);font:inherit;padding:2px 10px;cursor:pointer;text-shadow:none}.bar button:hover{color:var(--c);border-color:var(--c)}
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:4vh 0 3vh}
+h1{margin:0;font-weight:400;font-size:clamp(64px,17vw,220px);line-height:.85;letter-spacing:.04em;color:#fff;text-shadow:-5px 0 var(--m),5px 0 var(--c),0 0 40px rgba(255,185,56,.5)}
+.tag{color:var(--a);font-size:clamp(16px,2vw,22px);margin:12px 0 14px}
+#log{min-height:84px;color:var(--dim);text-align:left}
+.d{color:var(--dim)}.e{color:#ff5470}.c{color:var(--a)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px;width:100%}
+.card{display:block;padding:18px;color:var(--ink);text-decoration:none;background:rgba(10,5,30,.74);backdrop-filter:blur(4px);border:1px solid var(--k);box-shadow:0 0 16px var(--kg);transition:.15s}
+.card:hover,.card:focus-visible{outline:0;transform:translateY(-3px);box-shadow:0 0 34px var(--kg),inset 0 0 28px var(--kg)}
+.card b{display:block;color:var(--k);font-size:22px;font-weight:400}.card .p{color:var(--dim);font-size:13px}
+.k1{--k:#ffb938;--kg:rgba(255,185,56,.35)}.k2{--k:#4df3ff;--kg:rgba(77,243,255,.35)}.k3{--k:#ff4fa3;--kg:rgba(255,79,163,.35)}
+.st{font-size:13px;margin-top:10px;color:var(--dim)}.st.on{color:#6bff95}.st.off{color:var(--a)}
+#term{margin-top:20px;border:1px solid var(--line);background:rgba(7,4,22,.82);padding:10px 14px;cursor:text}
 #row{display:flex;gap:8px}
-#i{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--fg);font:inherit}
-footer{margin-top:40px;color:var(--dim);font-size:13px}
-@media (prefers-reduced-motion:no-preference){.card{animation:in .5s both}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}@keyframes in{from{opacity:0;transform:translateY(8px)}}}
-</style></head><body><main>
-<h1>0VULN</h1>
-<div class="tag">learn it. break it (safely). defend it.</div>
-<div id="log"></div>
+#i{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--ink);font:inherit;text-shadow:inherit}
+footer{margin-top:14px;color:var(--dim);font-size:13px}footer a{color:var(--dim)}
+</style></head><body>
+<div class="sun"></div><div class="floor"></div>
+<main>
+<div class="bar"><span>0vuln.com</span><button id="fs" title="Toggle fullscreen">⛶ fullscreen</button></div>
+<div class="hero"><h1>0VULN</h1><div class="tag">learn it. break it (safely). defend it.</div><div id="log"></div></div>
 <div class="grid">
-<a class="card" href="https://raeene.0vuln.com" data-k="about"><span class="p">~/about</span><b>Raeene</b>Resume, projects and who is behind all this.<div class="st" data-s="about">● checking</div></a>
-<a class="card" href="https://pcap.0vuln.com" data-k="pcap"><span class="p">~/pcap</span><b>PacketStory</b>Drop a .pcap file, get the story of what happened. Runs entirely in your browser.<div class="st" data-s="pcap">● checking</div></a>
-<a class="card" href="https://range.0vuln.com" data-k="range"><span class="p">~/range</span><b>0vuln Range</b>A simulated hacking lab: 10 services, 10 flags, hints included.<div class="st" data-s="range">● checking</div></a>
+<a class="card k1" href="https://raeene.0vuln.com"><span class="p">~/about</span><b>Raeene</b>Resume, projects and who is behind all this.<div class="st" data-s="about">● checking</div></a>
+<a class="card k2" href="https://pcap.0vuln.com"><span class="p">~/pcap</span><b>PacketStory</b>Drop a .pcap file, get the story of what happened. Runs entirely in your browser.<div class="st" data-s="pcap">● checking</div></a>
+<a class="card k3" href="https://range.0vuln.com"><span class="p">~/range</span><b>0vuln Range</b>A simulated hacking lab: 10 services, 10 flags, hints included.<div class="st" data-s="range">● checking</div></a>
 </div>
 <div id="term"><div id="out"></div><div id="row"><span class="c">visitor@0vuln:~$</span><input id="i" aria-label="terminal" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help"></div></div>
-<footer>Built by Raeene. Security contact: /.well-known/security.txt</footer>
+<footer>Built by Raeene. <a href="/.well-known/security.txt">security contact</a></footer>
 </main>
 <script>
 //LOGIC-START
@@ -45,10 +53,11 @@ const ALIAS={resume:'about',me:'about',whoami:'about',packetstory:'pcap',lab:'ra
 const state={};
 function reply(l){
   const[c,...a]=l.trim().toLowerCase().split(/\s+/);if(!c)return[];
-  if(c==='help')return[['commands: ls | open <about|pcap|range> | status | manifesto | whoami | clear','d']];
+  if(c==='help')return[['commands: ls | open <about|pcap|range> | status | manifesto | whoami | fullscreen | clear','d']];
   if(c==='ls')return[['about/  pcap/  range/','d']];
   if(c==='open'||c==='cd'){const k=ALIAS[a[0]]||a[0];return HOSTS[k]?[['opening '+HOSTS[k]+' ...','d'],['go',HOSTS[k]]]:[['open: choose about, pcap or range','e']]}
   if(c==='status')return[['status']];
+  if(c==='fullscreen'||c==='fs')return[['fs']];
   if(c==='manifesto')return[['0vuln: zero vulnerabilities is a direction, not a destination. Learn it, break it (safely), defend it.','d']];
   if(c==='whoami')return[['visitor. Try: open about, to meet the person behind this site.','d']];
   if(c==='clear')return[['clear']];
@@ -71,12 +80,15 @@ function run(l){
   for(const[x,y]of reply(l)){
     if(x==='clear')out.textContent='';
     else if(x==='go')setTimeout(()=>location.assign('https://'+y),400);
+    else if(x==='fs')$('#fs').click();
     else if(x==='status')check().then(()=>Object.keys(HOSTS).forEach(k=>say(k.padEnd(7)+(state[k]?'online':'coming soon'),state[k]?'':'d')));
     else say(x,y);
   }
 }
 inp.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=inp.value;inp.value='';run(v)}});
 $('#term').addEventListener('click',()=>inp.focus());
+const fb=$('#fs'),de=document.documentElement;
+if(de.requestFullscreen)fb.onclick=()=>document.fullscreenElement?document.exitFullscreen():de.requestFullscreen();else fb.hidden=true;
 const boot=['> initializing 0vuln.com ...','> 3 subdomains found','> known vulnerabilities: 0 (we are still looking)','> ready.'];
 const slow=!matchMedia('(prefers-reduced-motion:reduce)').matches;
 (async()=>{for(const l of boot){say(l,'d',log);if(slow)await new Promise(r=>setTimeout(r,350))}})();
