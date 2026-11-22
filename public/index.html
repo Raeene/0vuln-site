@@ -1,96 +1,108 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>0vuln – learn it, break it, defend it</title>
-<meta name="description" content="0vuln.com: a cybersecurity playground. A hacking lab, a packet analyzer, and the person behind them.">
-<meta property="og:title" content="0vuln"><meta property="og:description" content="Learn it, break it (safely), defend it.">
-<meta name="theme-color" content="#070416">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E🛡️%3C/text%3E%3C/svg%3E">
-<style>
-:root{--bg:#070416;--ink:#efe6ff;--dim:#9a8bd0;--a:#ffb938;--c:#4df3ff;--m:#ff4fa3;--line:#2a1f6b}
-*{box-sizing:border-box}html{background:var(--bg)}
-body{margin:0;min-height:100vh;color:var(--ink);font:17px/1.5 "Cascadia Mono","SF Mono",Menlo,Consolas,"Courier New",monospace;background:linear-gradient(#070416 0,#1a0b3d 60%,#3a0f5c 100%);overflow-x:hidden;text-shadow:0 0 6px rgba(160,120,255,.35)}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.5) 100%)}
-.sun{position:fixed;left:50%;bottom:26vh;width:min(48vw,420px);aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:linear-gradient(#ffb938 20%,#ff4fa3 100%);opacity:.85;z-index:0}
-.sun::after{content:"";position:absolute;inset:55% 0 0;background:repeating-linear-gradient(transparent 0 9px,#2a0f4d 9px 14px)}
-.floor{position:fixed;left:-60%;right:-60%;bottom:0;height:46vh;z-index:0;transform:perspective(320px) rotateX(62deg);transform-origin:bottom;background:linear-gradient(transparent 0,rgba(255,79,163,.28) 100%),repeating-linear-gradient(90deg,rgba(255,79,163,.6) 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,rgba(77,243,255,.45) 0 1px,transparent 1px 42px);background-position:0 0,0 0,0 0}
-@media (prefers-reduced-motion:no-preference){.floor{animation:g 2.4s linear infinite}@keyframes g{to{background-position:0 0,0 0,0 42px}}.card{animation:in .5s both}.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}@keyframes in{from{opacity:0;transform:translateY(10px)}}}
-main{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;padding:14px 4vw 22px}
-.bar{display:flex;justify-content:space-between;align-items:center;color:var(--dim);font-size:14px}
-.bar button{background:none;border:1px solid var(--line);color:var(--dim);font:inherit;padding:2px 10px;cursor:pointer;text-shadow:none}.bar button:hover{color:var(--c);border-color:var(--c)}
-.hero{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:4vh 0 3vh}
-h1{margin:0;font-weight:400;font-size:clamp(64px,17vw,220px);line-height:.85;letter-spacing:.04em;color:#fff;text-shadow:-5px 0 var(--m),5px 0 var(--c),0 0 40px rgba(255,185,56,.5)}
-.tag{color:var(--a);font-size:clamp(16px,2vw,22px);margin:12px 0 14px}
-#log{min-height:84px;color:var(--dim);text-align:left}
-.d{color:var(--dim)}.e{color:#ff5470}.c{color:var(--a)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px;width:100%}
-.card{display:block;padding:18px;color:var(--ink);text-decoration:none;background:rgba(10,5,30,.74);backdrop-filter:blur(4px);border:1px solid var(--k);box-shadow:0 0 16px var(--kg);transition:.15s}
-.card:hover,.card:focus-visible{outline:0;transform:translateY(-3px);box-shadow:0 0 34px var(--kg),inset 0 0 28px var(--kg)}
-.card b{display:block;color:var(--k);font-size:22px;font-weight:400}.card .p{color:var(--dim);font-size:13px}
-.k1{--k:#ffb938;--kg:rgba(255,185,56,.35)}.k2{--k:#4df3ff;--kg:rgba(77,243,255,.35)}.k3{--k:#ff4fa3;--kg:rgba(255,79,163,.35)}
-.st{font-size:13px;margin-top:10px;color:var(--dim)}.st.on{color:#6bff95}.st.off{color:var(--a)}
-#term{margin-top:20px;border:1px solid var(--line);background:rgba(7,4,22,.82);padding:10px 14px;cursor:text}
-#row{display:flex;gap:8px}
-#i{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--ink);font:inherit;text-shadow:inherit}
-footer{margin-top:14px;color:var(--dim);font-size:13px}footer a{color:var(--dim)}
-</style></head><body>
-<div class="sun"></div><div class="floor"></div>
-<main>
-<div class="bar"><span>0vuln.com</span><button id="fs" title="Toggle fullscreen">⛶ fullscreen</button></div>
-<div class="hero"><h1>0VULN</h1><div class="tag">learn it. break it (safely). defend it.</div><div id="log"></div></div>
-<div class="grid">
-<a class="card k1" href="https://raeene.0vuln.com"><span class="p">~/about</span><b>Raeene</b>Resume, projects and who is behind all this.<div class="st" data-s="about">● checking</div></a>
-<a class="card k2" href="https://pcap.0vuln.com"><span class="p">~/pcap</span><b>PacketStory</b>Drop a .pcap file, get the story of what happened. Runs entirely in your browser.<div class="st" data-s="pcap">● checking</div></a>
-<a class="card k3" href="https://range.0vuln.com"><span class="p">~/range</span><b>0vuln Range</b>A simulated hacking lab: 10 services, 10 flags, hints included.<div class="st" data-s="range">● checking</div></a>
-</div>
-<div id="term"><div id="out"></div><div id="row"><span class="c">visitor@0vuln:~$</span><input id="i" aria-label="terminal" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help"></div></div>
-<footer>Built by Raeene. <a href="/.well-known/security.txt">security contact</a></footer>
+<title>0vuln: learn it, break it (safely), defend it</title>
+<meta name="description" content="0vuln.com is a free cybersecurity playground: hack a simulated machine in your browser, export your attack as a real .pcap, then investigate it from the defender's side.">
+<link rel="canonical" href="https://0vuln.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://0vuln.com/">
+<meta property="og:title" content="0vuln: learn it, break it (safely), defend it">
+<meta property="og:description" content="Hack a simulated machine in your browser, then investigate your own attack as a defender. Free, no sign-up, nothing leaves your browser.">
+<meta property="og:image" content="https://0vuln.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#05061a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/vt323.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/hub.css">
+<script src="/hub.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">skip to content</a>
+<div class="scene" aria-hidden="true"><div class="stars"></div><div class="sun"></div><div class="floor"></div></div>
+
+<header class="ov">
+  <a class="ov-logo" href="/" aria-label="0vuln home"><img src="/favicon.svg" alt="">0vuln</a>
+  <nav aria-label="0vuln sites">
+    <a href="https://range.0vuln.com">range</a>
+    <a href="https://pcap.0vuln.com">pcap</a>
+    <a href="https://raeene.0vuln.com">raeene</a>
+    <a href="https://github.com/Raeene">github</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <p class="kicker">// a cybersecurity playground</p>
+    <h1 class="glitch" data-text="0VULN">0VULN</h1>
+    <p class="tagline">learn it<span>.</span> break it <em>(safely)</em><span>.</span> defend it<span>.</span></p>
+    <pre class="boot" id="boot" aria-hidden="true"></pre>
+    <div class="cta">
+      <a class="btn" href="https://range.0vuln.com">&#9654; start hacking</a>
+      <a class="btn ghost" href="#loop">how it works</a>
+    </div>
+  </section>
+
+  <section class="sec" id="tools" aria-labelledby="tools-h">
+    <h2 id="tools-h">tools</h2>
+    <p class="sub">Free, with no sign-up and no tracking. Everything runs in your browser.</p>
+    <div class="grid">
+      <a class="card k3" href="https://range.0vuln.com">
+        <div class="top"><span class="path">~/range</span><pre aria-hidden="true">[ 10.0.0.9 ]
+ |##### >_|
+ '--------'</pre></div>
+        <h3>0vuln Range</h3>
+        <p>A simulated hacking lab. Scan one target, work through 10 vulnerable services and capture 10 flags. Progressive hints, nothing real touched.</p>
+        <ul class="chips"><li>nmap</li><li>ftp</li><li>smb</li><li>dns axfr</li><li>snmp</li><li>ssh</li></ul>
+        <div class="bot"><span class="st" data-s="range">checking</span><span class="go">launch &rarr;</span></div>
+      </a>
+      <a class="card k2" href="https://pcap.0vuln.com">
+        <div class="top"><span class="path">~/pcap</span><pre aria-hidden="true">.-.  .-.  .-.
+   '-'  '-'  '
+ [ pcap -&gt; story ]</pre></div>
+        <h3>PacketStory</h3>
+        <p>Drop a .pcap or .pcapng file and get a plain-language story of what happened: scans, brute force, leaked credentials, tunneling, all tagged with MITRE ATT&amp;CK.</p>
+        <ul class="chips"><li>pcap / pcapng</li><li>detections</li><li>packet table</li><li>local only</li></ul>
+        <div class="bot"><span class="st" data-s="pcap">checking</span><span class="go">launch &rarr;</span></div>
+      </a>
+      <a class="card" href="https://raeene.0vuln.com">
+        <div class="top"><span class="path">~/raeene</span><pre aria-hidden="true">  .---.
+  |o_o|
+  '---'</pre></div>
+        <h3>Raeene</h3>
+        <p>The person behind 0vuln: an engineering student at ENSA Khouribga heading into security. Resume, projects, and what I'm learning right now.</p>
+        <ul class="chips"><li>about</li><li>resume</li><li>projects</li><li>now</li></ul>
+        <div class="bot"><span class="st" data-s="about">checking</span><span class="go">visit &rarr;</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" id="loop" aria-labelledby="loop-h">
+    <h2 id="loop-h">the loop</h2>
+    <p class="sub">Most labs stop once you have the flag. Here, your attack becomes the evidence you investigate next.</p>
+    <div class="loop">
+      <div class="step s1"><b>01</b><h3>attack</h3><p>Hack the target in <a href="https://range.0vuln.com">Range</a>: recon, anonymous FTP, null sessions, zone transfers, reused passwords.</p></div>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <div class="step s2"><b>02</b><h3>capture</h3><p>Every command you run generates real packets. Type <code>analyze</code> to send your session over as a .pcap.</p></div>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <div class="step s3"><b>03</b><h3>investigate</h3><p><a href="https://pcap.0vuln.com">PacketStory</a> reconstructs your attack from the defender's side: the scan, the cleartext logins, the stolen files.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="shell" aria-labelledby="shell-h">
+    <h2 id="shell-h">shell</h2>
+    <div class="term" id="term">
+      <div class="term-h"><i></i><i></i><i></i><span>visitor@0vuln: ~</span><button type="button" id="fs" title="Toggle fullscreen">&#x26F6; fullscreen</button></div>
+      <div id="out" role="log" aria-live="polite"></div>
+      <div id="row"><label for="i">visitor@0vuln:~$</label><input id="i" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help, press Tab to complete"></div>
+    </div>
+  </section>
 </main>
-<script>
-//LOGIC-START
-const HOSTS={about:'raeene.0vuln.com',pcap:'pcap.0vuln.com',range:'range.0vuln.com'};
-const ALIAS={resume:'about',me:'about',whoami:'about',packetstory:'pcap',lab:'range'};
-const state={};
-function reply(l){
-  const[c,...a]=l.trim().toLowerCase().split(/\s+/);if(!c)return[];
-  if(c==='help')return[['commands: ls | open <about|pcap|range> | status | manifesto | whoami | fullscreen | clear','d']];
-  if(c==='ls')return[['about/  pcap/  range/','d']];
-  if(c==='open'||c==='cd'){const k=ALIAS[a[0]]||a[0];return HOSTS[k]?[['opening '+HOSTS[k]+' ...','d'],['go',HOSTS[k]]]:[['open: choose about, pcap or range','e']]}
-  if(c==='status')return[['status']];
-  if(c==='fullscreen'||c==='fs')return[['fs']];
-  if(c==='manifesto')return[['0vuln: zero vulnerabilities is a direction, not a destination. Learn it, break it (safely), defend it.','d']];
-  if(c==='whoami')return[['visitor. Try: open about, to meet the person behind this site.','d']];
-  if(c==='clear')return[['clear']];
-  if(c==='sudo')return[['nice try. this server has zero known vulnerabilities.','e']];
-  return[[c+': command not found. Type help.','e']];
-}
-//LOGIC-END
-const $=s=>document.querySelector(s),out=$('#out'),log=$('#log'),inp=$('#i');
-const say=(x,c,box=out)=>{const d=document.createElement('div');d.textContent=x;d.className=c||'';box.appendChild(d)};
-function check(){
-  return Promise.all(Object.entries(HOSTS).map(([k,h])=>{
-    const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),4000);
-    return fetch('https://'+h,{mode:'no-cors',cache:'no-store',signal:ac.signal}).then(()=>1,()=>0).then(v=>{
-      clearTimeout(tm);state[k]=v;const e=document.querySelector('[data-s="'+k+'"]');
-      if(e){e.textContent=v?'● online':'● coming soon';e.className='st '+(v?'on':'off')}});
-  }));
-}
-function run(l){
-  say('visitor@0vuln:~$ '+l,'c');
-  for(const[x,y]of reply(l)){
-    if(x==='clear')out.textContent='';
-    else if(x==='go')setTimeout(()=>location.assign('https://'+y),400);
-    else if(x==='fs')$('#fs').click();
-    else if(x==='status')check().then(()=>Object.keys(HOSTS).forEach(k=>say(k.padEnd(7)+(state[k]?'online':'coming soon'),state[k]?'':'d')));
-    else say(x,y);
-  }
-}
-inp.addEventListener('keydown',e=>{if(e.key==='Enter'){const v=inp.value;inp.value='';run(v)}});
-$('#term').addEventListener('click',()=>inp.focus());
-const fb=$('#fs'),de=document.documentElement;
-if(de.requestFullscreen)fb.onclick=()=>document.fullscreenElement?document.exitFullscreen():de.requestFullscreen();else fb.hidden=true;
-const boot=['> initializing 0vuln.com ...','> 3 subdomains found','> known vulnerabilities: 0 (we are still looking)','> ready.'];
-const slow=!matchMedia('(prefers-reduced-motion:reduce)').matches;
-(async()=>{for(const l of boot){say(l,'d',log);if(slow)await new Promise(r=>setTimeout(r,350))}})();
-check();
-</script></body></html>
+
+<footer class="foot">
+  <span>&copy; 2026 0vuln.com. Built by <a href="https://raeene.0vuln.com">Raeene</a>.</span>
+  <nav aria-label="Footer"><a href="https://github.com/Raeene">github</a><a href="/.well-known/security.txt">security.txt</a><a href="https://range.0vuln.com">range</a><a href="https://pcap.0vuln.com">pcap</a></nav>
+</footer>
+</body>
+</html>
