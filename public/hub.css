@@ -137,3 +137,14 @@
 .hero h1, .hero .lead { margin-left: 0; }
 .hero .row { justify-content: flex-start; }
 .hero .wrap:first-child { max-width: var(--w); }
+
+/* changelog */
+.page-hero-hub { padding: 96px 0 8px; }
+.page-hero-hub .lead { margin-top: 24px; }
+.log { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.log > li { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 8px 40px; padding: 40px 0; border-bottom: 1px solid var(--line); }
+.log-when { font: 500 13px/1.8 var(--mono); color: var(--acc); }
+.log-body h2 { margin-bottom: 16px; font-size: 24px; }
+.log-body ul { margin: 0 0 20px; padding-left: 18px; color: var(--muted); display: grid; gap: 10px; max-width: 760px; }
+.log-body li b { color: #fff; }
+@media (max-width: 820px) { .log > li { grid-template-columns: 1fr; } }

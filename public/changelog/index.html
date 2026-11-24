@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What's new | 0vuln</title>
+<meta name="description" content="Everything that changed on 0vuln: new features in the Range and PacketStory, and site updates.">
+<link rel="canonical" href="https://0vuln.com/changelog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="0vuln">
+<meta property="og:url" content="https://0vuln.com/changelog/">
+<meta property="og:title" content="What's new | 0vuln">
+<meta property="og:description" content="Everything that changed on 0vuln: new features in the Range and PacketStory, and site updates.">
+<meta property="og:image" content="https://0vuln.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#06070b">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="alternate" type="application/atom+xml" title="0vuln: what's new" href="https://0vuln.com/feed.xml">
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/ds.css"><link rel="stylesheet" href="/hub.css">
+<script src="/ds.js" defer></script>
+</head>
+<body data-site="hub">
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg-fx" aria-hidden="true"><i></i><i></i><i></i></div>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="logo" href="https://0vuln.com/" aria-label="0vuln home"><img src="/favicon.svg" alt="" width="28" height="28"><span>0vuln</span></a>
+    <nav class="sites" aria-label="0vuln sites"><a class="s-hub" href="https://0vuln.com/" aria-current="page">Hub</a><a class="s-range" href="https://range.0vuln.com/">Range</a><a class="s-pcap" href="https://pcap.0vuln.com/">PacketStory</a><a class="s-raeene" href="https://raeene.0vuln.com/">Raeene</a></nav>
+    <span class="sp"></span>
+    <nav class="subnav" aria-label="On this site"><a href="/#tools">Tools</a><a href="/#loop">How it works</a><a href="/#shell">Shell</a><a href="/changelog/" aria-current="page">What's new</a></nav>
+    <button class="k-btn" type="button" data-cmdk aria-label="Open command menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="k-label">Jump to</span><span class="kbd k-mod">Ctrl</span><span class="kbd">K</span></button>
+    <a class="icon-btn gh" href="https://github.com/Raeene/0vuln-site" aria-label="Source code on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero-hub">
+    <div class="wrap">
+      <p class="eyebrow rise">Changelog</p>
+      <h1 class="h-1 rise d1">What's new on 0vuln.</h1>
+      <p class="lead rise d2">New features and fixes across the Range, PacketStory and the sites. Follow along with the <a class="link" href="/feed.xml">Atom feed</a>.</p>
+    </div>
+  </section>
+
+  <section class="section tight">
+    <div class="wrap">
+      <ol class="log">
+        <li class="reveal">
+          <div class="log-when"><time datetime="2026-11-24">24 Nov 2026</time></div>
+          <div class="log-body">
+            <h2 class="h-3">PacketStory takes packets apart, byte by byte</h2>
+            <ul>
+              <li><b>Packet inspector.</b> Click any packet to see every layer decoded: Ethernet, IPv4/IPv6, TCP, UDP, ICMP, ARP. Checksums are verified, and hovering a field highlights its exact bytes in the hex view. Use <kbd>j</kbd>/<kbd>k</kbd> to step through packets.</li>
+              <li><b>Follow conversation.</b> Rebuilds everything two hosts said to each other, client in red, server in blue. Perfect for reading an HTTP exchange or an FTP login.</li>
+              <li><b>CSV export</b> of every packet matching your filter.</li>
+              <li><b>Works offline.</b> After one visit, PacketStory runs without internet and can be installed as an app.</li>
+            </ul>
+            <a class="more" href="https://pcap.0vuln.com/#demo">Try it on the demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="log-when"><time datetime="2026-11-24">24 Nov 2026</time></div>
+          <div class="log-body">
+            <h2 class="h-3">The Range teaches, not just tests</h2>
+            <ul>
+              <li><b>Debriefs.</b> Every flag explains what was misconfigured, how to fix it, what a defender would see, and the MITRE ATT&amp;CK technique. Click a captured flag to reread it.</li>
+              <li><b>Loot notebook.</b> Credentials and clues are written down automatically as you uncover them.</li>
+              <li><b><code>explain &lt;command&gt;</code></b> describes each tool and what it looks like on the network.</li>
+              <li><b>Works offline</b> and installs as an app.</li>
+            </ul>
+            <a class="more" href="https://range.0vuln.com/">Open the Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="log-when"><time datetime="2026-11-23">23 Nov 2026</time></div>
+          <div class="log-body">
+            <h2 class="h-3">One design across every site</h2>
+            <ul>
+              <li>A shared design system for 0vuln.com, the Range, PacketStory and raeene.0vuln.com.</li>
+              <li><b>Press <kbd>Ctrl</kbd> <kbd>K</kbd></b> anywhere to jump between sites and pages, or run actions like loading the PacketStory demo.</li>
+              <li>The Range hands your session straight to PacketStory with <code>analyze</code>, and PacketStory now draws a network map of the busiest hosts.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="log-when"><time datetime="2026-11-22">22 Nov 2026</time></div>
+          <div class="log-body">
+            <h2 class="h-3">PacketStory 2.0 and realistic Range traffic</h2>
+            <ul>
+              <li>PacketStory reads .pcapng as well as .pcap, with 17 detectors (up from 6), artifact tables, a timeline and a filterable packet table.</li>
+              <li>Range packets now have valid checksums and sequence numbers: a full playthrough opens in Wireshark with zero malformed frames.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="https://0vuln.com/"><img src="/favicon.svg" alt="" width="28" height="28"><span>0vuln</span></a>
+        <p class="blurb">A free cybersecurity playground. Attack a simulated server, then investigate your own attack from the defender's side. Everything runs in your browser.</p>
+      </div>
+      <div><h4>Tools</h4><ul><li><a href="https://range.0vuln.com/">Range</a></li><li><a href="https://pcap.0vuln.com/">PacketStory</a></li><li><a href="https://pcap.0vuln.com/#demo">PacketStory demo</a></li><li><a href="https://0vuln.com/changelog/">What's new</a></li></ul></div>
+      <div><h4>Raeene</h4><ul><li><a href="https://raeene.0vuln.com/about/">About</a></li><li><a href="https://raeene.0vuln.com/projects/">Projects</a></li><li><a href="https://raeene.0vuln.com/resume/">Resume</a></li><li><a href="https://raeene.0vuln.com/now/">Now</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul><li><a href="https://github.com/Raeene">GitHub</a></li><li><a href="https://www.linkedin.com/in/ray-safi-938491195/">LinkedIn</a></li><li><a href="mailto:raaene@protonmail.com">Email</a></li><li><a href="https://0vuln.com/.well-known/security.txt">security.txt</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; <span data-year>2026</span> Mohamed-Rayane (Raeene). <a class="link" href="https://github.com/Raeene/0vuln-site">Source on GitHub</a>.</span>
+      <span class="status"><span class="dot"></span>No trackers, no cookies, strict CSP.</span>
+    </div>
+    <div class="foot-word" aria-hidden="true">0vuln</div>
+  </div>
+</footer>
+</body>
+</html>

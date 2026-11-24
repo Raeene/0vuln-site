@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>0vuln: what's new</title>
+  <link href="https://0vuln.com/changelog/"/>
+  <link rel="self" href="https://0vuln.com/feed.xml"/>
+  <id>https://0vuln.com/changelog/</id>
+  <updated>2026-11-24T00:00:00Z</updated>
+  <author><name>Raeene</name></author>
+  <entry>
+    <title>PacketStory takes packets apart, byte by byte</title>
+    <link href="https://0vuln.com/changelog/"/>
+    <id>https://0vuln.com/changelog/#2026-11-24-pcap</id>
+    <updated>2026-11-24T00:00:00Z</updated>
+    <summary>Packet inspector with decoded layers and hex view, follow conversation, CSV export, and offline mode.</summary>
+  </entry>
+  <entry>
+    <title>The Range teaches, not just tests</title>
+    <link href="https://0vuln.com/changelog/"/>
+    <id>https://0vuln.com/changelog/#2026-11-24-range</id>
+    <updated>2026-11-24T00:00:00Z</updated>
+    <summary>Debriefs after every flag, an automatic loot notebook, the explain command, and offline mode.</summary>
+  </entry>
+  <entry>
+    <title>One design across every site</title>
+    <link href="https://0vuln.com/changelog/"/>
+    <id>https://0vuln.com/changelog/#2026-11-23</id>
+    <updated>2026-11-23T00:00:00Z</updated>
+    <summary>A shared design system, the Ctrl+K command menu, and the Range to PacketStory hand-off.</summary>
+  </entry>
+</feed>
