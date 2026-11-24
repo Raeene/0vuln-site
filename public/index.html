@@ -1,108 +1,243 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>0vuln: learn it, break it (safely), defend it</title>
-<meta name="description" content="0vuln.com is a free cybersecurity playground: hack a simulated machine in your browser, export your attack as a real .pcap, then investigate it from the defender's side.">
+<title>0vuln: break it, see it, defend it</title>
+<meta name="description" content="A free cybersecurity playground. Hack a simulated server in your browser, export your attack as a real .pcap, then investigate it from the defender's side. No sign-up, nothing leaves your browser.">
 <link rel="canonical" href="https://0vuln.com/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="0vuln">
 <meta property="og:url" content="https://0vuln.com/">
-<meta property="og:title" content="0vuln: learn it, break it (safely), defend it">
-<meta property="og:description" content="Hack a simulated machine in your browser, then investigate your own attack as a defender. Free, no sign-up, nothing leaves your browser.">
+<meta property="og:title" content="0vuln: break it, see it, defend it">
+<meta property="og:description" content="A free cybersecurity playground. Hack a simulated server in your browser, export your attack as a real .pcap, then investigate it from the defender's side. No sign-up, nothing leaves your browser.">
 <meta property="og:image" content="https://0vuln.com/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#05061a">
+<meta name="theme-color" content="#06070b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/vt323.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/hub.css">
-<script src="/hub.js" defer></script>
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/ds.css"><link rel="stylesheet" href="/hub.css">
+<script src="/ds.js" defer></script><script src="/hub.js" defer></script>
 </head>
-<body>
-<a class="skip" href="#main">skip to content</a>
-<div class="scene" aria-hidden="true"><div class="stars"></div><div class="sun"></div><div class="floor"></div></div>
-
-<header class="ov">
-  <a class="ov-logo" href="/" aria-label="0vuln home"><img src="/favicon.svg" alt="">0vuln</a>
-  <nav aria-label="0vuln sites">
-    <a href="https://range.0vuln.com">range</a>
-    <a href="https://pcap.0vuln.com">pcap</a>
-    <a href="https://raeene.0vuln.com">raeene</a>
-    <a href="https://github.com/Raeene">github</a>
-  </nav>
+<body data-site="hub">
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg-fx" aria-hidden="true"><i></i><i></i><i></i></div>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="logo" href="https://0vuln.com/" aria-label="0vuln home"><img src="/favicon.svg" alt="" width="28" height="28"><span>0vuln</span></a>
+    <nav class="sites" aria-label="0vuln sites"><a class="s-hub" href="https://0vuln.com/" aria-current="page">Hub</a><a class="s-range" href="https://range.0vuln.com/">Range</a><a class="s-pcap" href="https://pcap.0vuln.com/">PacketStory</a><a class="s-raeene" href="https://raeene.0vuln.com/">Raeene</a></nav>
+    <span class="sp"></span>
+    <nav class="subnav" aria-label="On this site"><a href="/#tools">Tools</a><a href="/#loop">How it works</a><a href="/#shell">Shell</a></nav>
+    <button class="k-btn" type="button" data-cmdk aria-label="Open command menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="k-label">Jump to</span><span class="kbd k-mod">Ctrl</span><span class="kbd">K</span></button>
+    <a class="icon-btn gh" href="https://github.com/Raeene/0vuln-site" aria-label="Source code on GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  </div>
 </header>
-
 <main id="main">
+
   <section class="hero">
-    <p class="kicker">// a cybersecurity playground</p>
-    <h1 class="glitch" data-text="0VULN">0VULN</h1>
-    <p class="tagline">learn it<span>.</span> break it <em>(safely)</em><span>.</span> defend it<span>.</span></p>
-    <pre class="boot" id="boot" aria-hidden="true"></pre>
-    <div class="cta">
-      <a class="btn" href="https://range.0vuln.com">&#9654; start hacking</a>
-      <a class="btn ghost" href="#loop">how it works</a>
+    <div class="wrap">
+      <a class="pill rise" href="https://range.0vuln.com/"><b>NEW</b>Range now hands your attack straight to PacketStory <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <h1 class="h-display rise d1">Break it. See it.<br><span class="grad">Defend it.</span></h1>
+      <p class="lead rise d2">0vuln is a free cybersecurity playground. Hack a simulated server in a browser terminal, then flip sides and investigate the packets your own attack left behind.</p>
+      <div class="row rise d3">
+        <a class="btn btn-primary" href="https://range.0vuln.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg>Start hacking<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="https://pcap.0vuln.com/#demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Analyze a capture</a>
+      </div>
+      <p class="hero-note rise d4"><span class="dot"></span>No sign-up. No tracking. Nothing leaves your browser.</p>
+    </div>
+
+    <div class="wrap wide">
+      <div class="replay term rise d5" aria-label="Animated replay: an attack in the Range, detected by PacketStory">
+        <div class="term-bar">
+          <span class="lights"><i></i><i></i><i></i></span>
+          <span class="title">replay: range.0vuln.com &rarr; pcap.0vuln.com</span>
+          <span class="live"><i></i>LIVE</span>
+        </div>
+        <div class="rp-grid">
+          <div class="rp-col">
+            <div class="rp-h"><span class="tag t-red">Attacker</span><span class="mono dim">kali &middot; 10.0.0.5</span></div>
+            <div class="rp-term" id="rp-term" aria-hidden="true"></div>
+          </div>
+          <div class="rp-mid">
+            <canvas id="rp-canvas" aria-hidden="true"></canvas>
+            <div class="rp-nodes" aria-hidden="true">
+              <span class="n-a">10.0.0.5<small>attacker</small></span>
+              <span class="n-t">10.0.0.9<small>files01</small></span>
+              <span class="n-s">sensor<small>.pcap</small></span>
+            </div>
+          </div>
+          <div class="rp-col">
+            <div class="rp-h"><span class="tag t-cyan">Defender</span><span class="mono dim">PacketStory</span></div>
+            <ol class="rp-feed" id="rp-feed" aria-hidden="true"></ol>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="sec" id="tools" aria-labelledby="tools-h">
-    <h2 id="tools-h">tools</h2>
-    <p class="sub">Free, with no sign-up and no tracking. Everything runs in your browser.</p>
-    <div class="grid">
-      <a class="card k3" href="https://range.0vuln.com">
-        <div class="top"><span class="path">~/range</span><pre aria-hidden="true">[ 10.0.0.9 ]
- |##### >_|
- '--------'</pre></div>
-        <h3>0vuln Range</h3>
-        <p>A simulated hacking lab. Scan one target, work through 10 vulnerable services and capture 10 flags. Progressive hints, nothing real touched.</p>
-        <ul class="chips"><li>nmap</li><li>ftp</li><li>smb</li><li>dns axfr</li><li>snmp</li><li>ssh</li></ul>
-        <div class="bot"><span class="st" data-s="range">checking</span><span class="go">launch &rarr;</span></div>
-      </a>
-      <a class="card k2" href="https://pcap.0vuln.com">
-        <div class="top"><span class="path">~/pcap</span><pre aria-hidden="true">.-.  .-.  .-.
-   '-'  '-'  '
- [ pcap -&gt; story ]</pre></div>
-        <h3>PacketStory</h3>
-        <p>Drop a .pcap or .pcapng file and get a plain-language story of what happened: scans, brute force, leaked credentials, tunneling, all tagged with MITRE ATT&amp;CK.</p>
-        <ul class="chips"><li>pcap / pcapng</li><li>detections</li><li>packet table</li><li>local only</li></ul>
-        <div class="bot"><span class="st" data-s="pcap">checking</span><span class="go">launch &rarr;</span></div>
-      </a>
-      <a class="card" href="https://raeene.0vuln.com">
-        <div class="top"><span class="path">~/raeene</span><pre aria-hidden="true">  .---.
-  |o_o|
-  '---'</pre></div>
-        <h3>Raeene</h3>
-        <p>The person behind 0vuln: an engineering student at ENSA Khouribga heading into security. Resume, projects, and what I'm learning right now.</p>
-        <ul class="chips"><li>about</li><li>resume</li><li>projects</li><li>now</li></ul>
-        <div class="bot"><span class="st" data-s="about">checking</span><span class="go">visit &rarr;</span></div>
-      </a>
+  <section class="section tight">
+    <div class="wrap">
+      <div class="stats reveal">
+        <div><b data-count="10">10</b><span>vulnerable services to break</span></div>
+        <div><b data-count="17">17</b><span>attack detectors, ATT&amp;CK-mapped</span></div>
+        <div><b data-count="0">0</b><span>bytes uploaded, ever</span></div>
+        <div><b data-count="0">0</b><span>accounts, cookies or trackers</span></div>
+      </div>
     </div>
   </section>
 
-  <section class="sec" id="loop" aria-labelledby="loop-h">
-    <h2 id="loop-h">the loop</h2>
-    <p class="sub">Most labs stop once you have the flag. Here, your attack becomes the evidence you investigate next.</p>
-    <div class="loop">
-      <div class="step s1"><b>01</b><h3>attack</h3><p>Hack the target in <a href="https://range.0vuln.com">Range</a>: recon, anonymous FTP, null sessions, zone transfers, reused passwords.</p></div>
-      <div class="arrow" aria-hidden="true">&rarr;</div>
-      <div class="step s2"><b>02</b><h3>capture</h3><p>Every command you run generates real packets. Type <code>analyze</code> to send your session over as a .pcap.</p></div>
-      <div class="arrow" aria-hidden="true">&rarr;</div>
-      <div class="step s3"><b>03</b><h3>investigate</h3><p><a href="https://pcap.0vuln.com">PacketStory</a> reconstructs your attack from the defender's side: the scan, the cleartext logins, the stolen files.</p></div>
+  <section class="section" id="tools">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The tools</p>
+        <h2 class="h-1">Two tools.<br><span class="dim">One feedback loop.</span></h2>
+      </div>
+      <div class="bento">
+        <a class="card c-red tool tool-lg reveal" href="https://range.0vuln.com/">
+          <div class="tool-top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg></span><span class="st"><span class="dot wait" data-dot="range"></span><span data-st="range">checking</span></span></div>
+          <h3>Range</h3>
+          <p>A hacking lab in a browser terminal. One target, ten misconfigured services, ten flags. Recon, loot, pivot on leaked credentials, and get a hint whenever you're stuck.</p>
+          <div class="vis-range" aria-hidden="true">
+            <span>ftp</span><span>http</span><span>smb</span><span>nfs</span><span>dns</span><span>smtp</span><span>snmp</span><span>mysql</span><span>imap</span><span>ssh</span>
+          </div>
+          <span class="more">Launch Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="card c-cyan tool tool-lg reveal d1" href="https://pcap.0vuln.com/">
+          <div class="tool-top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><span class="st"><span class="dot wait" data-dot="pcap"></span><span data-st="pcap">checking</span></span></div>
+          <h3>PacketStory</h3>
+          <p>Drop a .pcap or .pcapng file and read what happened in plain language. Scans, brute force, cleartext logins and DNS tunneling, each tagged with its MITRE ATT&amp;CK technique.</p>
+          <div class="vis-pcap" aria-hidden="true">
+            <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="det"><span class="sev s-alert">alert</span>Port scan from 10.0.0.5 <em>T1046</em></div>
+            <div class="det"><span class="sev s-warn">warn</span>Cleartext FTP login <em>T1552</em></div>
+          </div>
+          <span class="more">Open PacketStory <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="card c-green tool reveal" href="https://raeene.0vuln.com/">
+          <div class="tool-top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><span class="st"><span class="dot wait" data-dot="raeene"></span><span data-st="raeene">checking</span></span></div>
+          <h3>Raeene</h3>
+          <p>The engineering student behind 0vuln. Projects, resume and what I'm learning right now.</p>
+          <span class="more">Meet Raeene <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="card c-violet tool reveal d1" href="https://github.com/Raeene">
+          <div class="tool-top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"/></svg></span></div>
+          <h3>Open source</h3>
+          <p>Every site here is static HTML and plain JavaScript, MIT licensed. Read it, fork it, break it.</p>
+          <span class="more">github.com/Raeene <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+        <a class="card c-amber tool reveal d2" href="https://pcap.0vuln.com/#demo">
+          <div class="tool-top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5v14l11-7z"/></svg></span></div>
+          <h3>30-second demo</h3>
+          <p>No capture handy? Load a sample with a port scan, an FTP brute force and DNS tunneling.</p>
+          <span class="more">Run the demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="sec" id="shell" aria-labelledby="shell-h">
-    <h2 id="shell-h">shell</h2>
-    <div class="term" id="term">
-      <div class="term-h"><i></i><i></i><i></i><span>visitor@0vuln: ~</span><button type="button" id="fs" title="Toggle fullscreen">&#x26F6; fullscreen</button></div>
-      <div id="out" role="log" aria-live="polite"></div>
-      <div id="row"><label for="i">visitor@0vuln:~$</label><input id="i" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help, press Tab to complete"></div>
+  <section class="section" id="loop">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <p class="eyebrow">How it works</p>
+        <h2 class="h-1">Your attack becomes<br><span class="grad">the evidence.</span></h2>
+        <p class="lead">Most labs stop once you have the flag. On 0vuln, every command you run generates real packets, and you investigate them next.</p>
+      </div>
+      <div class="loop">
+        <svg class="loop-line" viewBox="0 0 1000 4" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#ff4d6d"/><stop offset=".5" stop-color="#9b87ff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><line x1="0" y1="2" x2="1000" y2="2" stroke="url(#lg)" stroke-width="2" stroke-dasharray="6 8"/></svg>
+        <div class="card step c-red reveal">
+          <span class="num">01</span>
+          <h3>Attack</h3>
+          <p>Break into files01 in the Range: anonymous FTP, null sessions, a zone transfer, credentials leaked by SNMP.</p>
+          <pre class="snip"><span class="a">$</span> nmap 10.0.0.9
+<span class="a">$</span> ftp 10.0.0.9
+<span class="d">230 Login successful.</span></pre>
+        </div>
+        <div class="card step c-violet reveal d1">
+          <span class="num">02</span>
+          <h3>Capture</h3>
+          <p>Every command emits well-formed packets with valid checksums. Type <code>analyze</code> to send the whole session over.</p>
+          <pre class="snip"><span class="a">$</span> analyze
+<span class="d">Opening PacketStory ...</span>
+<span class="g">Sent 3,412 packets.</span></pre>
+        </div>
+        <div class="card step c-cyan reveal d2">
+          <span class="num">03</span>
+          <h3>Investigate</h3>
+          <p>PacketStory rebuilds your attack from the defender's side: the scan, the cleartext logins, the files you stole.</p>
+          <pre class="snip"><span class="e">ALERT</span> Port scan    <span class="d">T1046</span>
+<span class="y">WARN </span> FTP login    <span class="d">T1552</span>
+<span class="e">ALERT</span> Zone xfer    <span class="d">T1590</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Built differently</p>
+        <h2 class="h-1">Safe by design.<br><span class="dim">Private by default.</span></h2>
+      </div>
+      <div class="grid g3">
+        <div class="card feat reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><h3>Runs in your browser</h3><p>The Range simulates its whole network in JavaScript. PacketStory parses captures in a Web Worker on your machine.</p></div>
+        <div class="card feat reveal d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h3>Nothing is uploaded</h3><p>PacketStory's Content-Security-Policy is <code>connect-src 'none'</code>, so the browser itself blocks every network request.</p></div>
+        <div class="card feat reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Nothing real is touched</h3><p>The target is fake and lives in your tab. Practice offensive techniques without needing permission from anyone.</p></div>
+        <div class="card feat reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>Real packets</h3><p>Valid IPv4, TCP and UDP checksums, DNS and SNMP encodings. Exported sessions open cleanly in Wireshark.</p></div>
+        <div class="card feat reveal d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h3>Mapped to ATT&amp;CK</h3><p>Every detection links to its MITRE ATT&amp;CK technique, so you learn the vocabulary defenders actually use.</p></div>
+        <div class="card feat reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 4 14h7l-1 7 9-11h-7z"/></svg></span><h3>No sign-up, ever</h3><p>No accounts, no cookies, no analytics. Your Range progress is stored in your own browser.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="shell">
+    <div class="wrap">
+      <div class="shell-grid">
+        <div class="reveal">
+          <p class="eyebrow">Prefer a terminal?</p>
+          <h2 class="h-1">Navigate 0vuln<br>from a shell.</h2>
+          <p class="lead">Type <code>help</code> to look around, <code>status</code> to ping every site, or <code>open range</code> to jump in. Tab completes and the arrow keys walk your history.</p>
+          <p class="muted">Or press <span class="kbd k-mod">Ctrl</span> <span class="kbd">K</span> anywhere on 0vuln to jump between sites.</p>
+        </div>
+        <div class="term shell reveal d1" id="term">
+          <div class="term-bar"><span class="lights"><i></i><i></i><i></i></span><span class="title">visitor@0vuln: ~</span><button type="button" id="fs" title="Toggle fullscreen" aria-label="Toggle fullscreen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button></div>
+          <div class="term-body" id="out" role="log" aria-live="polite"></div>
+          <div class="term-line"><label for="i">visitor@0vuln:~$</label><input id="i" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type help"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <h2 class="h-1">Ready to break<br>something?</h2>
+        <p class="lead">Ten flags are waiting on 10.0.0.9. Most people get the first one in under five minutes.</p>
+        <div class="row">
+          <a class="btn btn-primary shine" href="https://range.0vuln.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg>Start hacking<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="https://raeene.0vuln.com/">Who built this?</a>
+        </div>
+      </div>
     </div>
   </section>
 </main>
-
 <footer class="foot">
-  <span>&copy; 2026 0vuln.com. Built by <a href="https://raeene.0vuln.com">Raeene</a>.</span>
-  <nav aria-label="Footer"><a href="https://github.com/Raeene">github</a><a href="/.well-known/security.txt">security.txt</a><a href="https://range.0vuln.com">range</a><a href="https://pcap.0vuln.com">pcap</a></nav>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="https://0vuln.com/"><img src="/favicon.svg" alt="" width="28" height="28"><span>0vuln</span></a>
+        <p class="blurb">A free cybersecurity playground. Attack a simulated server, then investigate your own attack from the defender's side. Everything runs in your browser.</p>
+      </div>
+      <div><h4>Tools</h4><ul><li><a href="https://range.0vuln.com/">Range</a></li><li><a href="https://pcap.0vuln.com/">PacketStory</a></li><li><a href="https://pcap.0vuln.com/#demo">PacketStory demo</a></li><li><a href="https://0vuln.com/#shell">Hub shell</a></li></ul></div>
+      <div><h4>Raeene</h4><ul><li><a href="https://raeene.0vuln.com/about/">About</a></li><li><a href="https://raeene.0vuln.com/projects/">Projects</a></li><li><a href="https://raeene.0vuln.com/resume/">Resume</a></li><li><a href="https://raeene.0vuln.com/now/">Now</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul><li><a href="https://github.com/Raeene">GitHub</a></li><li><a href="https://www.linkedin.com/in/ray-safi-938491195/">LinkedIn</a></li><li><a href="mailto:raaene@protonmail.com">Email</a></li><li><a href="https://0vuln.com/.well-known/security.txt">security.txt</a></li></ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; <span data-year>2026</span> Mohamed-Rayane (Raeene). <a class="link" href="https://github.com/Raeene/0vuln-site">Source on GitHub</a>.</span>
+      <span class="status"><span class="dot"></span>No trackers, no cookies, strict CSP.</span>
+    </div>
+    <div class="foot-word" aria-hidden="true">0vuln</div>
+  </div>
 </footer>
 </body>
 </html>
