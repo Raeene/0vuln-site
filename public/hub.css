@@ -117,3 +117,23 @@
 .nf .code { font: 700 clamp(120px, 26vw, 280px)/.85 var(--display); letter-spacing: -.06em; margin-bottom: 24px; }
 .nf .lead { margin: 0 auto 36px; }
 .nf .row { justify-content: center; }
+
+/* v2.1 */
+.hero .def { color: var(--cyan); }
+.hero h1 { color: #fff; }
+.replay { box-shadow: 0 40px 120px -40px rgba(0, 0, 0, .9); }
+.replay::before { display: none; }
+.closing { padding: 72px 0 24px; border-top: 1px solid var(--line); }
+.closing h2 { margin: 18px 0 36px; max-width: 820px; }
+.tool-lg { min-height: 440px; }
+.bento .tool:not(.tool-lg) { grid-column: span 3; min-height: 0; }
+@media (max-width: 680px) { .bento .tool:not(.tool-lg) { grid-column: auto; } }
+.vis-range span { animation-name: pwn2; }
+@keyframes pwn2 { 0%, 8% { color: var(--dim); border-color: var(--line); background: transparent; } 12%, 85% { color: #fff; border-color: rgba(255, 77, 109, .55); background: rgba(255, 77, 109, .1); } 100% { color: var(--dim); border-color: var(--line); background: transparent; } }
+.step { background: var(--bg-2); }
+.step .num { box-shadow: none; }
+.loop { margin-top: 8px; }
+.hero { text-align: left; }
+.hero h1, .hero .lead { margin-left: 0; }
+.hero .row { justify-content: flex-start; }
+.hero .wrap:first-child { max-width: var(--w); }

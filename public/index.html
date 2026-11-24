@@ -38,8 +38,8 @@
   <section class="hero">
     <div class="wrap">
       <a class="pill rise" href="https://range.0vuln.com/"><b>NEW</b>Range now hands your attack straight to PacketStory <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <h1 class="h-display rise d1">Break it. See it.<br><span class="grad">Defend it.</span></h1>
-      <p class="lead rise d2">0vuln is a free cybersecurity playground. Hack a simulated server in a browser terminal, then flip sides and investigate the packets your own attack left behind.</p>
+      <h1 class="h-display rise d1">Break it. See it.<br><span class="def">Defend it.</span></h1>
+      <p class="lead rise d2">A hacking lab and a packet analyzer I built as a student. You attack a fake server in your browser, then open the capture and see exactly what a defender would have seen.</p>
       <div class="row rise d3">
         <a class="btn btn-primary" href="https://range.0vuln.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg>Start hacking<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-ghost" href="https://pcap.0vuln.com/#demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Analyze a capture</a>
@@ -76,22 +76,12 @@
     </div>
   </section>
 
-  <section class="section tight">
-    <div class="wrap">
-      <div class="stats reveal">
-        <div><b data-count="10">10</b><span>vulnerable services to break</span></div>
-        <div><b data-count="17">17</b><span>attack detectors, ATT&amp;CK-mapped</span></div>
-        <div><b data-count="0">0</b><span>bytes uploaded, ever</span></div>
-        <div><b data-count="0">0</b><span>accounts, cookies or trackers</span></div>
-      </div>
-    </div>
-  </section>
 
   <section class="section" id="tools">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">The tools</p>
-        <h2 class="h-1">Two tools.<br><span class="dim">One feedback loop.</span></h2>
+        <h2 class="h-1">Two tools that feed each other.</h2>
       </div>
       <div class="bento">
         <a class="card c-red tool tool-lg reveal" href="https://range.0vuln.com/">
@@ -126,22 +116,16 @@
           <p>Every site here is static HTML and plain JavaScript, MIT licensed. Read it, fork it, break it.</p>
           <span class="more">github.com/Raeene <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </a>
-        <a class="card c-amber tool reveal d2" href="https://pcap.0vuln.com/#demo">
-          <div class="tool-top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5v14l11-7z"/></svg></span></div>
-          <h3>30-second demo</h3>
-          <p>No capture handy? Load a sample with a port scan, an FTP brute force and DNS tunneling.</p>
-          <span class="more">Run the demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </a>
       </div>
     </div>
   </section>
 
   <section class="section" id="loop">
     <div class="wrap">
-      <div class="section-head center reveal">
-        <p class="eyebrow">How it works</p>
-        <h2 class="h-1">Your attack becomes<br><span class="grad">the evidence.</span></h2>
-        <p class="lead">Most labs stop once you have the flag. On 0vuln, every command you run generates real packets, and you investigate them next.</p>
+      <div class="section-head reveal">
+        <p class="eyebrow">The loop</p>
+        <h2 class="h-1">Your attack becomes the evidence.</h2>
+        <p class="lead">Most labs end when you get the flag. Here, every command you typed was also written to a capture, and the next step is reading it.</p>
       </div>
       <div class="loop">
         <svg class="loop-line" viewBox="0 0 1000 4" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#ff4d6d"/><stop offset=".5" stop-color="#9b87ff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><line x1="0" y1="2" x2="1000" y2="2" stroke="url(#lg)" stroke-width="2" stroke-dasharray="6 8"/></svg>
@@ -176,17 +160,17 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Built differently</p>
-        <h2 class="h-1">Safe by design.<br><span class="dim">Private by default.</span></h2>
+        <p class="eyebrow">Fine print</p>
+        <h2 class="h-1">How it's built, and what it won't do.</h2>
       </div>
-      <div class="grid g3">
-        <div class="card feat reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span><h3>Runs in your browser</h3><p>The Range simulates its whole network in JavaScript. PacketStory parses captures in a Web Worker on your machine.</p></div>
-        <div class="card feat reveal d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h3>Nothing is uploaded</h3><p>PacketStory's Content-Security-Policy is <code>connect-src 'none'</code>, so the browser itself blocks every network request.</p></div>
-        <div class="card feat reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>Nothing real is touched</h3><p>The target is fake and lives in your tab. Practice offensive techniques without needing permission from anyone.</p></div>
-        <div class="card feat reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><h3>Real packets</h3><p>Valid IPv4, TCP and UDP checksums, DNS and SNMP encodings. Exported sessions open cleanly in Wireshark.</p></div>
-        <div class="card feat reveal d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><h3>Mapped to ATT&amp;CK</h3><p>Every detection links to its MITRE ATT&amp;CK technique, so you learn the vocabulary defenders actually use.</p></div>
-        <div class="card feat reveal d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3 4 14h7l-1 7 9-11h-7z"/></svg></span><h3>No sign-up, ever</h3><p>No accounts, no cookies, no analytics. Your Range progress is stored in your own browser.</p></div>
-      </div>
+      <dl class="spec reveal">
+        <div><dt>where it runs</dt><dd>In your tab. The Range's whole network, target included, is JavaScript. PacketStory parses captures in a Web Worker on your machine.</dd></div>
+        <div><dt>uploads</dt><dd><b>None, and the browser enforces it.</b> PacketStory ships <code>connect-src 'none'</code>, so even a bug couldn't send your capture anywhere.</dd></div>
+        <div><dt>the packets</dt><dd>Real ones. Valid IPv4/TCP/UDP checksums, TCP sequence numbers, DNS and SNMP encodings. A full playthrough opens in Wireshark with zero malformed frames.</dd></div>
+        <div><dt>detections</dt><dd>17 heuristics, each linked to its MITRE ATT&amp;CK technique. They say "suspected" because they're heuristics, not magic.</dd></div>
+        <div><dt>accounts</dt><dd>There aren't any. No cookies, no analytics. Range progress lives in your browser's local storage and nowhere else.</dd></div>
+        <div><dt>source</dt><dd>Static HTML and plain JavaScript, MIT licensed, on <a class="link" href="https://github.com/Raeene">GitHub</a>. No framework, no build step for the tools.</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -195,7 +179,7 @@
       <div class="shell-grid">
         <div class="reveal">
           <p class="eyebrow">Prefer a terminal?</p>
-          <h2 class="h-1">Navigate 0vuln<br>from a shell.</h2>
+          <h2 class="h-1">There's a shell.</h2>
           <p class="lead">Type <code>help</code> to look around, <code>status</code> to ping every site, or <code>open range</code> to jump in. Tab completes and the arrow keys walk your history.</p>
           <p class="muted">Or press <span class="kbd k-mod">Ctrl</span> <span class="kbd">K</span> anywhere on 0vuln to jump between sites.</p>
         </div>
@@ -210,12 +194,12 @@
 
   <section class="section">
     <div class="wrap">
-      <div class="cta-band reveal">
-        <h2 class="h-1">Ready to break<br>something?</h2>
-        <p class="lead">Ten flags are waiting on 10.0.0.9. Most people get the first one in under five minutes.</p>
+      <div class="closing reveal">
+        <p class="mono dim">attacker@kali:~$ <span class="acc">nmap 10.0.0.9</span></p>
+        <h2 class="h-1">Ten flags are sitting on 10.0.0.9.</h2>
         <div class="row">
-          <a class="btn btn-primary shine" href="https://range.0vuln.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg>Start hacking<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost" href="https://raeene.0vuln.com/">Who built this?</a>
+          <a class="btn btn-primary" href="https://range.0vuln.com/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-6-6-6M12 19h8"/></svg>Go get them<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="https://raeene.0vuln.com/">Who made this</a>
         </div>
       </div>
     </div>
