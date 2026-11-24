@@ -11,7 +11,7 @@
     <link href="https://0vuln.com/changelog/"/>
     <id>https://0vuln.com/changelog/#2026-11-24-pcap</id>
     <updated>2026-11-24T00:00:00Z</updated>
-    <summary>Packet inspector with decoded layers and hex view, follow conversation, TLS server names (SNI), CSV export, and offline mode.</summary>
+    <summary>Packet inspector with decoded layers and hex view, follow conversation, a solve-the-case challenge, TLS server names (SNI), CSV export, and offline mode.</summary>
   </entry>
   <entry>
     <title>The Range teaches, not just tests</title>
